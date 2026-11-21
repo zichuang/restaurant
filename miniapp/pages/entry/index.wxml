@@ -1,0 +1,38 @@
+<view class="entry">
+  <view class="brand">
+    <view class="brand-mark">川</view>
+    <view class="brand-name">老程川菜馆</view>
+    <view class="brand-sub">扫码点菜 · 现炒现做</view>
+  </view>
+
+  <view class="table-card">
+    <block wx:if="{{tableNo}}">
+      <view class="table-label">您已就座</view>
+      <view class="table-no">{{tableNo}}</view>
+      <view class="table-zone" wx:if="{{zone}}">{{zone}} · {{seats}} 人位</view>
+    </block>
+    <block wx:else>
+      <view class="table-label">未识别到桌号</view>
+      <view class="manual-hint">请扫描桌上的小程序码，或输入桌号</view>
+      <input
+        class="manual-input"
+        type="text"
+        placeholder="例如 A01"
+        maxlength="8"
+        value="{{inputNo}}"
+        bindinput="onInputNo"
+      />
+    </block>
+  </view>
+
+  <button class="btn-primary start-btn" bindtap="onStart" disabled="{{!tableNo && !inputNo}}">
+    开始点菜
+  </button>
+
+  <view class="tips">
+    <view class="tip-line">· 点好后可直接微信支付，支持加菜单独结算</view>
+    <view class="tip-line">· 餐具有需要请在备注中说明</view>
+  </view>
+
+  <view class="debug muted" wx:if="{{debug}}">scene = {{debug}}</view>
+</view>

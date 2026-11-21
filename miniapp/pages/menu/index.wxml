@@ -1,0 +1,149 @@
+<view class="menu-page">
+
+  <!-- 顶部桌号条 -->
+  <view class="table-bar">
+    <view class="tb-left">
+      <text class="tb-no">{{tableNo}}</text>
+      <text class="tb-zone" wx:if="{{zone}}">{{zone}}</text>
+    </view>
+    <text class="tb-tip">点好菜再下单，可随时加菜</text>
+  </view>
+
+  <!-- 加载 / 出错 -->
+  <view class="state-box" wx:if="{{loading}}">
+    <view class="spinner"></view>
+    <text class="muted">正在加载菜单…</text>
+  </view>
+
+  <view class="state-box" wx:elif="{{loadError}}">
+    <text class="err-text">{{loadError}}</text>
+    <button class="btn-ghost retry" bindtap="loadMenu">重新加载</button>
+  </view>
+
+  <!-- 菜单主体 -->
+  <view class="body" wx:else>
+    <scroll-view class="cat-nav" scroll-y enhanced show-scrollbar="{{false}}">
+      <view
+        wx:for="{{categories}}"
+        wx:key="id"
+        class="cat-item {{activeCatId === item.id ? 'active' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="onSwitchCat"
+      >
+        <text>{{item.name}}</text>
+      </view>
+    </scroll-view>
+
+    <scroll-view class="dish-list" scroll-y enhanced show-scrollbar="{{false}}">
+      <view class="cat-title">{{activeCatName}}</view>
+
+      <view class="dish-card" wx:for="{{visibleDishes}}" wx:key="id">
+        <view class="dish-thumb {{item.soldOut ? 'dim' : ''}}">
+          <text class="thumb-char">{{item.name[0]}}</text>
+        </view>
+
+        <view class="dish-main">
+          <view class="dish-name-row">
+            <text class="dish-name">{{item.name}}</text>
+            <text class="dish-tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+          </view>
+          <text class="dish-desc">{{item.description}}</text>
+
+          <view class="dish-bottom">
+            <view class="dish-price">
+              <text class="price-symbol">¥</text>
+              <text class="price-num">{{item.priceYuan}}</text>
+              <text class="dish-unit">/{{item.unit}}</text>
+            </view>
+
+            <view class="dish-action">
+              <text class="sold-out" wx:if="{{item.soldOut}}">已售完</text>
+              <block wx:elif="{{item.qty > 0}}">
+                <view class="step-btn" data-id="{{item.id}}" bindtap="onDec">−</view>
+                <text class="qty-num">{{item.qty}}</text>
+                <view class="step-btn plus" data-id="{{item.id}}" bindtap="onAdd">+</view>
+              </block>
+              <view class="add-btn" wx:else data-id="{{item.id}}" bindtap="onAdd">
+                {{item.hasSpec ? '选规格' : '加入'}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="list-foot muted">— 已经到底了 —</view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部结算栏 -->
+  <view class="cart-bar" wx:if="{{cartCount > 0 && !loading}}">
+    <view class="cart-left">
+      <view class="cart-badge">{{cartCount}}</view>
+      <view class="cart-text">
+        <text class="cart-total"><text class="cs">¥</text>{{cartTotalYuan}}</text>
+        <text class="cart-hint">另需餐位费 0 元</text>
+      </view>
+    </view>
+    <view class="cart-go" bindtap="goCheckout">去结算</view>
+  </view>
+
+  <!-- 规格选择弹层 -->
+  <view class="mask" wx:if="{{showSpec}}" bindtap="closeSpec"></view>
+  <view class="spec-panel" wx:if="{{showSpec}}">
+    <view class="sp-head">
+      <text class="sp-name">{{specDish.name}}</text>
+      <text class="sp-close" bindtap="closeSpec">✕</text>
+    </view>
+
+    <scroll-view class="sp-body" scroll-y>
+      <view class="sp-group" wx:for="{{specDish.specs}}" wx:key="name" wx:for-item="group">
+        <view class="sp-group-name">{{group.name}}</view>
+        <view class="opt-row">
+          <view
+            wx:for="{{group.options}}"
+            wx:key="name"
+            wx:for-item="opt"
+            class="opt {{specPick[group.name] === opt.name ? 'on' : ''}}"
+            data-group="{{group.name}}"
+            data-opt="{{opt.name}}"
+            bindtap="onPickSpec"
+          >
+            <text>{{opt.name}}</text>
+            <text class="opt-delta" wx:if="{{opt.deltaCents > 0}}">+{{opt.deltaYuan}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="sp-group" wx:if="{{specDish.addons.length > 0}}">
+        <view class="sp-group-name">加料</view>
+        <view class="opt-row">
+          <view
+            wx:for="{{specDish.addons}}"
+            wx:key="name"
+            wx:for-item="ad"
+            class="opt {{addonPick[ad.name] ? 'on' : ''}}"
+            data-name="{{ad.name}}"
+            bindtap="onToggleAddon"
+          >
+            <text>{{ad.name}}</text>
+            <text class="opt-delta" wx:if="{{ad.deltaCents > 0}}">+{{ad.deltaYuan}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="sp-group">
+        <view class="sp-group-name">备注</view>
+        <input class="sp-remark" placeholder="如：不要葱、少辣" maxlength="50" value="{{specRemark}}" bindinput="onRemarkInput" />
+      </view>
+    </scroll-view>
+
+    <view class="sp-foot">
+      <view class="sp-price">
+        <text class="muted">合计</text>
+        <text class="cart-total"><text class="cs">¥</text>{{specTotalYuan}}</text>
+      </view>
+      <view class="cart-go" bindtap="confirmSpec">加入购物车</view>
+    </view>
+  </view>
+
+</view>

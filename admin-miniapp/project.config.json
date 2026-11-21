@@ -1,0 +1,16 @@
+{
+  "appid": "wxaff32d272e4e5645",
+  "projectname": "restaurant-admin",
+  "description": "餐厅扫码点菜 · 管理端",
+  "compileType": "miniprogram",
+  "libVersion": "3.0.0",
+  "miniprogramRoot": "./",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "ignoreUploadUnusedFiles": true
+  }
+}

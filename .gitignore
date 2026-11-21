@@ -1,0 +1,96 @@
+# ============================================================
+# 敏感文件 —— 绝对不能提交
+# ============================================================
+# 商户私钥与证书（微信支付 APIv3 私钥、平台证书）
+server/certs/*
+!server/certs/.gitkeep
+*.p12
+*.pfx
+apiclient_key.pem
+apiclient_cert.pem
+*.key
+*.pem
+!**/appsettings.json
+
+# 含真实密码的本地配置
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Local.json
+.env
+.env.*
+
+# 上传产物
+server/uploads/
+uploads/
+
+# ============================================================
+# .NET
+# ============================================================
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
+publish/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+*.dll
+*.pdb
+*.cache
+TestResults/
+coverage*.json
+coverage*.xml
+
+# ============================================================
+# Node / 前端
+# ============================================================
+node_modules/
+dist/
+.npm/
+.npmrc
+*.log
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.vite/
+.next/
+
+# ============================================================
+# 微信小程序
+# ============================================================
+# 开发者工具的本地私有配置（含本机路径与个人设置）
+project.private.config.json
+miniprogram_npm/
+
+
+# ============================================================
+# 编辑器与系统
+# ============================================================
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# 日志与临时
+# ============================================================
+logs/
+*.tmp
+*.bak
+*.orig
+
+# ============================================================
+# 工具目录（WorkBuddy 项目数据、本地截图，不入库）
+# ============================================================
+.workbuddy/

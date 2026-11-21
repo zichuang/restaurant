@@ -1,0 +1,62 @@
+<view class="admin-page">
+
+  <!-- 顶部统计 -->
+  <view class="stat-bar">
+    <view class="stat">
+      <text class="stat-num">{{stat.idle}}</text>
+      <text class="stat-label">空闲</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num busy">{{stat.occupied}}</text>
+      <text class="stat-label">占用</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num alert">{{stat.pending}}</text>
+      <text class="stat-label">待接单</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">{{stat.total}}</text>
+      <text class="stat-label">总桌数</text>
+    </view>
+  </view>
+
+  <!-- 演示数据提示：避免以后自己误会成真数据 -->
+  <view class="mock-tip">
+    当前为 <text class="mock-strong">演示数据</text>，桌况接口尚未接入（见 docs/03-api.md GET /api/tables）
+  </view>
+
+  <!-- 桌况网格 -->
+  <view class="grid">
+    <view
+      wx:for="{{tables}}"
+      wx:key="id"
+      class="tile {{item.status}} {{item.pending > 0 ? 'has-pending' : ''}}"
+    >
+      <view class="tile-head">
+        <text class="tile-no">{{item.no}}</text>
+        <view class="dot" wx:if="{{item.pending > 0}}"></view>
+      </view>
+
+      <text class="tile-zone">{{item.zone}}</text>
+
+      <block wx:if="{{item.status === 'occupied'}}">
+        <text class="tile-amount">¥{{item.amountYuan}}</text>
+        <text class="tile-meta">{{item.minutes}} 分钟 · {{item.orders}} 单</text>
+      </block>
+      <block wx:else>
+        <text class="tile-idle">空闲</text>
+        <text class="tile-meta">{{item.seats}} 人位</text>
+      </block>
+    </view>
+  </view>
+
+  <!-- 下一步说明 -->
+  <view class="next-card">
+    <view class="next-title">M2 接入顺序</view>
+    <view class="next-line">1. 员工登录 → POST /api/staff/login</view>
+    <view class="next-line">2. 桌况实时刷新 → GET /api/tables + WebSocket</view>
+    <view class="next-line">3. 新单响铃 → 常开设备 + setKeepScreenOn</view>
+    <view class="next-line">4. 接单 / 出餐 → PATCH /api/orders/:id/status</view>
+  </view>
+
+</view>

@@ -1,0 +1,169 @@
+page {
+  background: #f6f3ee;
+  font-size: 28rpx;
+  color: #2b2b2b;
+}
+
+.admin-page {
+  padding: 24rpx 24rpx 40rpx;
+}
+
+/* 顶部统计 */
+.stat-bar {
+  display: flex;
+  background: #2f2a26;
+  border-radius: 20rpx;
+  padding: 24rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.stat-num.busy {
+  color: #f0b27a;
+}
+
+.stat-num.alert {
+  color: #ff6b4a;
+}
+
+.stat-label {
+  font-size: 20rpx;
+  color: #9c928a;
+  margin-top: 4rpx;
+}
+
+/* 演示提示 */
+.mock-tip {
+  background: #fff6e8;
+  border: 1rpx solid #f2d9b0;
+  color: #8a6d3b;
+  font-size: 22rpx;
+  line-height: 1.6;
+  padding: 14rpx 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.mock-strong {
+  font-weight: 700;
+  color: #c8452d;
+}
+
+/* 网格 */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -16rpx;
+}
+
+.tile {
+  width: calc(33.333% - 16rpx);
+  margin: 0 16rpx 16rpx 0;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx 18rpx;
+  box-sizing: border-box;
+  border: 2rpx solid transparent;
+  min-height: 176rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.tile.idle {
+  background: #fbfaf8;
+  border-color: #ece7e1;
+}
+
+.tile.occupied {
+  background: #fff;
+  border-color: #e8d5b8;
+}
+
+.tile.has-pending {
+  border-color: #ff6b4a;
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 74, 0.18);
+}
+
+.tile-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tile-no {
+  font-size: 34rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+  color: #2b2b2b;
+}
+
+.dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #ff6b4a;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.tile-zone {
+  font-size: 20rpx;
+  color: #a89c90;
+  margin-top: 2rpx;
+}
+
+.tile-amount {
+  margin-top: auto;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #c8452d;
+}
+
+.tile-idle {
+  margin-top: auto;
+  font-size: 24rpx;
+  color: #b8b0a6;
+}
+
+.tile-meta {
+  font-size: 20rpx;
+  color: #9c928a;
+  margin-top: 5rpx;
+}
+
+/* 下一步说明 */
+.next-card {
+  margin-top: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.next-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.next-line {
+  font-size: 22rpx;
+  color: #6b6b6b;
+  line-height: 2;
+}

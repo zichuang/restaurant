@@ -1,0 +1,57 @@
+{
+  "appid": "wxaff32d272e4e5645",
+  "projectname": "restaurant-miniapp",
+  "description": "餐厅扫码点菜 · 顾客端",
+  "compileType": "miniprogram",
+  "libVersion": "3.0.0",
+  "miniprogramRoot": "./",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "condition": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "扫码进入 A01 桌",
+          "pathName": "pages/entry/index",
+          "query": "scene=A01",
+          "scene": 1047
+        },
+        {
+          "name": "菜单页",
+          "pathName": "pages/menu/index",
+          "query": "tableNo=A01&sessionId=0"
+        }
+      ]
+    }
+  },
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {}
+}

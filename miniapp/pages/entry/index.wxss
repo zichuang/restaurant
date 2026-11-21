@@ -1,0 +1,108 @@
+.entry {
+  min-height: 100vh;
+  padding: 80rpx 48rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 品牌区 */
+.brand {
+  text-align: center;
+  margin-bottom: 64rpx;
+}
+
+.brand-mark {
+  width: 128rpx;
+  height: 128rpx;
+  line-height: 128rpx;
+  margin: 0 auto 24rpx;
+  border-radius: 32rpx;
+  background: #c8452d;
+  color: #fff;
+  font-size: 64rpx;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 12rpx 28rpx rgba(200, 69, 45, 0.28);
+}
+
+.brand-name {
+  font-size: 44rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.brand-sub {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #8c8c8c;
+  letter-spacing: 2rpx;
+}
+
+/* 桌号卡 */
+.table-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 56rpx 32rpx;
+  text-align: center;
+  box-shadow: 0 6rpx 24rpx rgba(43, 43, 43, 0.06);
+  margin-bottom: 48rpx;
+}
+
+.table-label {
+  font-size: 26rpx;
+  color: #8c8c8c;
+}
+
+.table-no {
+  margin: 16rpx 0 12rpx;
+  font-size: 96rpx;
+  font-weight: 700;
+  color: #c8452d;
+  letter-spacing: 6rpx;
+  line-height: 1.1;
+}
+
+.table-zone {
+  font-size: 26rpx;
+  color: #6b6b6b;
+}
+
+.manual-hint {
+  margin: 20rpx 0 32rpx;
+  font-size: 26rpx;
+  color: #6b6b6b;
+}
+
+.manual-input {
+  height: 96rpx;
+  border: 2rpx solid #e2dbd3;
+  border-radius: 16rpx;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 600;
+  letter-spacing: 8rpx;
+  color: #2b2b2b;
+}
+
+/* 按钮 */
+.start-btn {
+  margin-bottom: 40rpx;
+}
+
+/* 提示 */
+.tips {
+  margin-top: auto;
+}
+
+.tip-line {
+  font-size: 24rpx;
+  color: #8c8c8c;
+  line-height: 2;
+}
+
+.debug {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #b8b0a6;
+}

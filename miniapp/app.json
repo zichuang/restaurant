@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/entry/index",
+    "pages/menu/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#C8452D",
+    "navigationBarTitleText": "扫码点菜",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F6F3EE"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

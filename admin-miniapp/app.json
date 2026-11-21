@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/tables/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2F2A26",
+    "navigationBarTitleText": "桌况 · 管理端",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F6F3EE"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
