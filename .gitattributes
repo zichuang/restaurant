@@ -1,0 +1,39 @@
+# ============================================================
+# 换行符策略
+# ============================================================
+# 仓库内一律存 LF。Windows 上开发、Linux 上部署，
+# 若 .sh / systemd unit / nginx conf 被存成 CRLF，
+# 在服务器上会报 "bad interpreter" 或配置解析失败。
+* text=auto eol=lf
+
+# Windows 专属脚本保持 CRLF（cmd.exe 对 LF 的批处理解析不稳）
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# ============================================================
+# 二进制，不做换行符转换
+# ============================================================
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.bmp binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.p12 binary
+*.pfx binary
+*.pem binary
+*.key binary
+
+# ============================================================
+# 语言统计（GitHub 语言占比用）
+# ============================================================
+docs/** linguist-documentation
